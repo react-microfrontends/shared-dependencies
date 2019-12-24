@@ -13,7 +13,7 @@ jobs:
             cat importmap.json
 
             echo "Updating import map"
-            curl -X PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json" --fail --insecure -i
+            curl -X PATCH -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json" --fail --insecure -i
 
 workflows:
   version: 2
