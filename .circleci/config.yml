@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: google/cloud-sdk
+      - image: clue/httpie
     environment:
 
     steps:
@@ -13,7 +13,7 @@ jobs:
             cat importmap.json
 
             echo "Updating import map"
-            curl -X PATCH -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json" --fail --insecure
+            http PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV -a $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD < importmap.json
 
 workflows:
   version: 2
