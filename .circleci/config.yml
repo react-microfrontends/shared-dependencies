@@ -13,7 +13,7 @@ jobs:
             cat importmap.json
 
             echo "Updating import map"
-            http PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV -a $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD < importmap.json
+            http PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV -a $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD --check-status < importmap.json
 
 workflows:
   version: 2
