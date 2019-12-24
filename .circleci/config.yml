@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    environment:
+
+    steps:
+      - run:
+          name: Deploy
+          command: |
+            echo "Going to correct directory"
+            cd /home/circleci/project/
+            ls
+
+            echo "Updating import map"
+            curl -X PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - deploy:
+          context: deploy-context
+          filters:
+            branches:
+              only: master
