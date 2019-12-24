@@ -10,11 +10,10 @@ jobs:
       - run:
           name: Deploy
           command: |
-            echo "Going to correct directory"
-            ls
+            cat importmap.json
 
             echo "Updating import map"
-            curl -X PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json"
+            curl -X PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json" --fail --insecure -i
 
 workflows:
   version: 2
