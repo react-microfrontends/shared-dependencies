@@ -10,7 +10,6 @@ jobs:
           name: Deploy
           command: |
             echo "Going to correct directory"
-            cd /home/circleci/project/
             ls
 
             echo "Updating import map"
