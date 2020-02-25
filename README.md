@@ -5,7 +5,7 @@ An import map of shared dependencies for react microfrontends
 
 ## What is this?
 
-This is an example microfrontend repo demonstrating how to use [single-spa](https://single-spa.js.org). You can see the code running at https://react.microfrontends.app.
+This is an example microfrontend repo demonstrating how to use [single-spa](https://single-spa.js.org). You can see the code running at https://react.microfrontends.app. The full, deployed import map is visible at https://react.microfrontends.app/importmap.json.
 
 ## How does it work?
 
