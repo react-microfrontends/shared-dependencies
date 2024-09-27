@@ -8,6 +8,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Update Import Map
