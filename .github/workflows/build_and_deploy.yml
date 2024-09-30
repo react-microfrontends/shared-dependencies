@@ -12,4 +12,4 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Update Import Map
-        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@importmap.json" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
+        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@importmap.json" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
