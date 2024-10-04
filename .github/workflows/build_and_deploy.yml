@@ -8,7 +8,7 @@ on:
 
 jobs:
   build_test:
-    name: Release
+    name: Build And Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
