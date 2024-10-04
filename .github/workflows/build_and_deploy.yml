@@ -24,11 +24,17 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run build
+
+      # https://github.com/react-microfrontends/shared-dependencies/actions/runs/11187939513/job/31105869976
+      # https://github.com/actions/upload-artifact/issues/333#issuecomment-1227464293
+      - name: Zip dist folder
+        run: zip -r dist.zip dist
+
       - name: Store artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist
+          path: dist.zip
 
   release:
     name: Release
@@ -43,6 +49,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dist
+
+      - name: Unzip dist folder
+        run: unzip dist.zip -d dist
 
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
