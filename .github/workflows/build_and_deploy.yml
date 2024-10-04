@@ -24,6 +24,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run build
+      - name: Test
+        run: pnpm run check-format
 
       # https://github.com/react-microfrontends/shared-dependencies/actions/runs/11187939513/job/31105869976
       # https://github.com/actions/upload-artifact/issues/333#issuecomment-1227464293
@@ -51,7 +53,7 @@ jobs:
           name: dist
 
       - name: Unzip dist folder
-        run: unzip dist.zip -d dist
+        run: unzip dist.zip -d .
 
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
