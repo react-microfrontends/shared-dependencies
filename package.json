@@ -5,10 +5,10 @@
   "type": "module",
   "main": "generate-importmap.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf deps",
     "build": "pnpm run clean && node generate-importmap.js",
     "build:dev": "pnpm run clean && cross-env DEV=true node generate-importmap.js",
-    "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' dist",
+    "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' deps",
     "check-format": "prettier --check .",
     "format": "prettier --write .",
     "prepare": "husky"

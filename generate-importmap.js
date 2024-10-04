@@ -18,13 +18,13 @@ for (let module in template.imports) {
   await importMapGenerator.install(installString);
 }
 
-// Download all files in the import map to dist folder
+// Download all files in the import map to deps folder
 console.log("Downloading files");
 for (let url in importMapGenerator.getMap().integrity) {
   console.log(url);
   const r = await fetch(url);
   if (r.ok) {
-    const filePath = `./dist/${url.replace("https://ga.jspm.io/", "")}`;
+    const filePath = `./deps/${url.replace("https://ga.jspm.io/", "")}`;
     const dir = path.dirname(filePath);
     await mkdirp(dir);
     await fs.writeFile(filePath, await r.text(), "utf-8");
@@ -45,4 +45,4 @@ const importMapString = JSON.stringify(
 ).replace(/https:\/\/ga.jspm.io/g, baseHost);
 
 // Write final import map
-await fs.writeFile("dist/app.importmap", importMapString, "utf-8");
+await fs.writeFile("deps/app.importmap", importMapString, "utf-8");
