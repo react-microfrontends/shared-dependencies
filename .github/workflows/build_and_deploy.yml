@@ -53,7 +53,7 @@ jobs:
           name: deps
 
       - name: Unzip deps folder
-        run: unzip deps.zip -d . && rm deps.zip
+        run: unzip deps.zip -d inflated && rm deps.zip
 
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
@@ -65,7 +65,7 @@ jobs:
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: .
+          path: inflated
           destination: react.microfrontends.app
 
       - name: Update Import Map
