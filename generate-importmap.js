@@ -35,7 +35,7 @@ for (let url in importMapGenerator.getMap().integrity) {
 
 const baseHost = process.env.DEV
   ? "http://127.0.0.1:8080"
-  : "https://react.microfrontends.app";
+  : "https://react.microfrontends.app/deps";
 
 // Replace public CDN urls with self-hosted urls in import map
 const importMapString = JSON.stringify(
@@ -43,6 +43,8 @@ const importMapString = JSON.stringify(
   null,
   2,
 ).replace(/https:\/\/ga.jspm.io/g, baseHost);
+
+console.log(importMapString);
 
 // Write final import map
 await fs.writeFile("deps/app.importmap", importMapString, "utf-8");
