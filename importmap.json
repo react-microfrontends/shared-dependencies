@@ -1,9 +1,0 @@
-{
-  "imports": {
-    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@7.0.0-beta.0/lib/esm/single-spa.min.js",
-    "react": "https://cdn.jsdelivr.net/npm/@esm-bundle/react@17.0.2-fix.1/esm/react.development.js",
-    "react-dom": "https://cdn.jsdelivr.net/npm/@esm-bundle/react-dom@17.0.2-fix.0/esm/react-dom.development.js",
-    "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@7.8.1/esm/es2015/rxjs.min.js",
-    "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@7.8.1/esm/es2015/rxjs-operators.min.js"
-  }
-}
