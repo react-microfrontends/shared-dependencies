@@ -13,15 +13,13 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
       - name: Build
         run: pnpm run build
       - name: Test
@@ -62,10 +60,12 @@ jobs:
           workload_identity_provider: "projects/654158993889/locations/global/workloadIdentityPools/github/providers/my-repo"
           service_account: github-workload-identity-feder@neural-passkey-248222.iam.gserviceaccount.com
 
+      - name: Change dir
+        run: cd inflated
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: inflated
+          path: .
           destination: react.microfrontends.app
 
       - name: Update Import Map
