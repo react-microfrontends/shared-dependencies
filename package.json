@@ -1,0 +1,30 @@
+{
+  "name": "react-mfe-shared-dependencies",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "generate-importmap.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && node generate-importmap.js",
+    "build:dev": "pnpm run clean && cross-env DEV=true node generate-importmap.js",
+    "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' dist",
+    "check-format": "prettier --check .",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@jspm/generator": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "http-server": "^14.1.1",
+    "husky": "^9.1.6",
+    "mkdirp": "^3.0.1",
+    "prettier": "^3.3.3",
+    "pretty-quick": "^4.0.0",
+    "rimraf": "^6.0.1"
+  },
+  "packageManager": "pnpm@9.12.0"
+}
