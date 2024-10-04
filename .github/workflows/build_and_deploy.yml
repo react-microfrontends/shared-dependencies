@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
       - name: Build
         run: pnpm run build
       - name: Test
