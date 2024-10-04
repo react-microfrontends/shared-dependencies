@@ -70,4 +70,4 @@ jobs:
           parent: false
 
       - name: Update Import Map
-        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@inflated/deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
+        run: cat inflated/deps/app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@inflated/deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
