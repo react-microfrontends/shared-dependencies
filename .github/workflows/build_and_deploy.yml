@@ -65,8 +65,9 @@ jobs:
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: .
+          path: inflated/deps
           destination: react.microfrontends.app
+          parent: false
 
       - name: Update Import Map
-        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
+        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@inflated/deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
