@@ -47,4 +47,5 @@ const importMapString = JSON.stringify(
 console.log(importMapString);
 
 // Write final import map
-await fs.writeFile("deps/app.importmap", importMapString, "utf-8");
+await mkdirp("dist");
+await fs.writeFile("dist/app.importmap", importMapString, "utf-8");
