@@ -23,7 +23,7 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: Build
-        run: pnpm run build && find deps && find dist
+        run: pnpm run build
       - name: Test
         run: pnpm run check-format
 
