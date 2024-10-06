@@ -23,7 +23,7 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: Build
-        run: pnpm run build
+        run: pnpm run build && find deps && find dist
       - name: Test
         run: pnpm run check-format
 
@@ -81,4 +81,4 @@ jobs:
           name: dist
 
       - name: Update Import Map
-        run: cat dist/app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@inflated/deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
+        run: cat dist/app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@inflated/deps/app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -v
