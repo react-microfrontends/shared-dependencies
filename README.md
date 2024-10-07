@@ -10,9 +10,9 @@ This is an example microfrontend repo demonstrating how to use [single-spa](http
 
 [Full article](https://single-spa.js.org/docs/recommended-setup)
 
-This repository contains an [import map](https://github.com/WICG/import-maps/) that controls the shared libraries between all microfrontends.
+This repository contains an [import map](https://github.com/WICG/import-maps/) template that controls the shared libraries between all microfrontends.
 
-Whenever a pull request is merged to master, [CircleCI deploys the import map](https://circleci.com/gh/react-microfrontends/shared-dependencies). Deployments for this project are completely independent of deployments for any other module.
+Whenever a pull request is merged to main, a Github workflow auto-deploys the updated shared dependencies
 
 ## Adapting for your organization
 
