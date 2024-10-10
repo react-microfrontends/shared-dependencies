@@ -27,21 +27,31 @@ for (let globalScript of globalScripts["global-scripts"]) {
     throw error(`Could not download tarball for package '${globalScripts}'`);
   }
 
-  const outputFolder = `./deps/npm:${globalScript}`;
-
-  await mkdirp(outputFolder);
+  await mkdirp("./deps");
 
   // To-do figure out how to pipe the fetch response into tar
   const contents = await tarballResponse.arrayBuffer();
 
-  const tarballPath = `${outputFolder}/tarball.tar`;
+  const tarballPath = `deps/tarball.tar`;
 
   await fs.writeFile(tarballPath, Buffer.from(contents), "utf-8");
 
   await x({
     f: tarballPath,
-    cwd: outputFolder,
+    cwd: `deps`,
   });
+
+  const outputFolder = `deps/npm:${globalScript}`;
+
+  // Create top-level folder for scoped packages
+  const outputFolderParts = outputFolder.split("/");
+  if (outputFolderParts.length > 2) {
+    const pathParts = outputFolder.split("/");
+    pathParts.pop();
+    await mkdirp(pathParts.join("/"));
+  }
+
+  await fs.rename(`deps/package`, outputFolder);
 
   await fs.unlink(tarballPath);
 }
