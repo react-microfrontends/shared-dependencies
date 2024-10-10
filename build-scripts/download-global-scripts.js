@@ -27,7 +27,7 @@ for (let globalScript of globalScripts["global-scripts"]) {
     throw error(`Could not download tarball for package '${globalScripts}'`);
   }
 
-  const outputFolder = `./deps/deps/npm:${globalScript}`;
+  const outputFolder = `./deps/npm:${globalScript}`;
 
   await mkdirp(outputFolder);
 

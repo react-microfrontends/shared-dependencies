@@ -78,7 +78,7 @@ const importMapString = JSON.stringify(finalMap, null, 2).replace(
 console.log(importMapString);
 
 // Write final import map
-await mkdirp("dist/importmaps");
+await mkdirp("dist");
 await fs.writeFile("dist/app.importmap", importMapString, "utf-8");
 
 function processImportMapEntry(importMapKey, importMapValue) {
