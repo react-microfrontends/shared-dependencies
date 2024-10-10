@@ -1,4 +1,4 @@
-import template from "./importmap-template.json" with { type: "json" };
+import template from "../importmap-template.json" with { type: "json" };
 import { Generator } from "@jspm/generator";
 import fs from "node:fs/promises";
 import { mkdirp } from "mkdirp";
@@ -78,7 +78,7 @@ const importMapString = JSON.stringify(finalMap, null, 2).replace(
 console.log(importMapString);
 
 // Write final import map
-await mkdirp("dist");
+await mkdirp("dist/importmaps");
 await fs.writeFile("dist/app.importmap", importMapString, "utf-8");
 
 function processImportMapEntry(importMapKey, importMapValue) {

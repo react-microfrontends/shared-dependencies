@@ -68,7 +68,7 @@ jobs:
           workload_identity_provider: "projects/654158993889/locations/global/workloadIdentityPools/github/providers/my-repo"
           service_account: github-workload-identity-feder@neural-passkey-248222.iam.gserviceaccount.com
 
-      - name: Upload Static Files to CDN
+      - name: Upload Deps to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: inflated/deps
@@ -81,4 +81,11 @@ jobs:
           name: dist
 
       - name: Update Import Map
-        run: cat app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -v
+        run: cat dist/app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -v
+
+      - name: Upload Global Deps to CDN
+        uses: "google-github-actions/upload-cloud-storage@v2"
+        with:
+          path: dist/deps
+          destination: react.microfrontends.app/deps
+          parent: false
