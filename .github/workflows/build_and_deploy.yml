@@ -81,4 +81,9 @@ jobs:
           name: dist
 
       - name: Update Import Map
-        run: cat app.importmap && curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} --data "@app.importmap" -X PATCH ${{ secrets.DEPLOYER_HOST }}/import-map.json\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail-with-body -v
+        uses: single-spa/action-deploy-to-import-map-deployer@v1
+        with:
+          host: ${{ secrets.DEPLOYER_HOST }}
+          username: ${{ secrets.DEPLOYER_USERNAME }}
+          password: ${{ secrets.DEPLOYER_PASSWORD }}
+          import-map-path: app.importmap
