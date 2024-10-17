@@ -5,12 +5,8 @@
   "type": "module",
   "main": "generate-importmap.js",
   "scripts": {
-    "clean": "rimraf deps dist",
-    "build": "pnpm run clean && concurrently pnpm:build:*",
-    "build:importmap": "node build-scripts/generate-importmap.js",
-    "build:global-scripts": "node build-scripts/download-global-scripts.js",
-    "dev:build:importmap": "pnpm run clean && cross-env DEV=true node generate-importmap.js",
-    "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' deps",
+    "build": "node build-scripts/download-global-scripts.js",
+    "serve": "http-server --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }'",
     "check-format": "prettier --check .",
     "format": "prettier --write .",
     "prepare": "husky"
@@ -20,7 +16,6 @@
   "license": "MIT",
   "devDependencies": {
     "@jspm/generator": "^2.3.1",
-    "concurrently": "^9.0.1",
     "cross-env": "^7.0.3",
     "http-server": "^14.1.1",
     "husky": "^9.1.6",
