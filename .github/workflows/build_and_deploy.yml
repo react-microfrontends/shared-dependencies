@@ -23,7 +23,7 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: Build Import Map
-        uses: single-spa/action-build-import-map-microfrontend-deps
+        uses: single-spa/action-build-import-map-microfrontend-deps@main
         with:
           import-map-template: importmap-template.json
           output-folder: deps
