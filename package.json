@@ -7,7 +7,6 @@
   "scripts": {
     "clean": "rimraf deps dist",
     "build": "node build-scripts/download-global-scripts.js",
-    "dev:build:importmap": "pnpm run clean && cross-env DEV=true node generate-importmap.js",
     "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' deps",
     "check-format": "prettier --check .",
     "format": "prettier --write .",
