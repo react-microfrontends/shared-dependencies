@@ -6,17 +6,14 @@
   "main": "generate-importmap.js",
   "scripts": {
     "clean": "rimraf deps dist",
-    "build": "pnpm run clean && concurrently pnpm:build:*",
-    "build:importmap": "node build-scripts/generate-importmap.js",
-    "build:global-scripts": "node build-scripts/download-global-scripts.js",
-    "dev:build:importmap": "pnpm run clean && cross-env DEV=true node generate-importmap.js",
+    "build": "node build-scripts/download-global-scripts.js",
     "serve": "http-server --cors --mimetypes '{ \"application/importmap+json\": [\"importmap\"] }' deps",
     "check-format": "prettier --check .",
     "format": "prettier --write .",
     "prepare": "husky"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joel Denning",
   "license": "MIT",
   "devDependencies": {
     "@jspm/generator": "^2.3.1",
