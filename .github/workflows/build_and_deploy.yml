@@ -22,7 +22,13 @@ jobs:
           cache: pnpm
       - name: Install
         run: pnpm install --frozen-lockfile
-      - name: Build
+      - name: Build Import Map
+        uses: single-spa/action-build-import-map-microfrontend-deps
+        with:
+          import-map-template: importmap-template.json
+          output-folder: deps
+          base-origin: https://react.microfrontends.app
+      - name: Build Global Scripts
         run: pnpm run build
       - name: Test
         run: pnpm run check-format
