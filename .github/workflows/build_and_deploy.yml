@@ -25,7 +25,7 @@ jobs:
       - name: Build Import Map
         uses: single-spa/action-build-import-map-microfrontend-deps@main
         with:
-          import-map-template: importmap-template.json
+          import-map-template: ./importmap-template.json
           output-folder: deps
           base-origin: https://react.microfrontends.app
       - name: Build Global Scripts
