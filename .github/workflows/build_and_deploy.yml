@@ -81,4 +81,4 @@ jobs:
           host: ${{ secrets.DEPLOYER_HOST }}
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
-          import-map-path: infalted/deps/deps.importmap
+          import-map-path: inflated/deps/deps.importmap
