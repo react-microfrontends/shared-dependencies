@@ -44,12 +44,6 @@ jobs:
           name: deps
           path: deps.zip
 
-      - name: Store artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
   release:
     name: Release
     needs: build_test
@@ -81,15 +75,10 @@ jobs:
           destination: react.microfrontends.app/deps
           parent: false
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-
       - name: Update Import Map
         uses: single-spa/action-deploy-to-import-map-deployer@v1
         with:
           host: ${{ secrets.DEPLOYER_HOST }}
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
-          import-map-path: app.importmap
+          import-map-path: infalted/deps/deps.importmap
