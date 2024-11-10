@@ -82,3 +82,4 @@ jobs:
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
           import-map-path: inflated/deps/deps.importmap
+          environment-name: react
