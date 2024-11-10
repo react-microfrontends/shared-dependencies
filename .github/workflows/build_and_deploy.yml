@@ -72,7 +72,7 @@ jobs:
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: inflated/deps
-          destination: react.microfrontends.app/deps
+          destination: react.microfrontends.app
           parent: false
 
       - name: Update Import Map
