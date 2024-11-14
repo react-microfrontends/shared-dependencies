@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Build Global Script Dependencies
-        uses: single-spa/action-build-global-script-deps@main
+        uses: single-spa/action-build-global-script-deps@v1
         with:
           global-scripts: ./global-scripts.json
           # TODO: make it make sense
