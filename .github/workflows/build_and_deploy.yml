@@ -17,7 +17,8 @@ jobs:
         uses: single-spa/action-build-global-script-deps@main
         with:
           global-scripts: ./global-scripts.json
-          output-folder: deps
+          # TODO: make it make sense
+          output-folder: deps/deps
       - name: Build Import Map
         uses: single-spa/action-build-import-map-microfrontend-deps@v1
         with:
