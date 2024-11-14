@@ -18,7 +18,7 @@ jobs:
         with:
           global-scripts: ./global-scripts.json
           output-folder: deps
-      - run: ls -al deps
+      - run: find .
       - name: Build Import Map
         uses: single-spa/action-build-import-map-microfrontend-deps@v1
         with:
@@ -26,7 +26,7 @@ jobs:
           output-folder: deps
           base-origin: https://react.microfrontends.app
 
-      - run: ls -al deps
+      - run: find .
       # https://github.com/react-microfrontends/shared-dependencies/actions/runs/11187939513/job/31105869976
       # https://github.com/actions/upload-artifact/issues/333#issuecomment-1227464293
       - name: Zip deps folder
