@@ -71,7 +71,7 @@ jobs:
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: inflated/dist/deps
-          destination: react.microfrontends.app
+          destination: react.microfrontends.app/deps
           parent: false
 
       - name: Download build artifact
