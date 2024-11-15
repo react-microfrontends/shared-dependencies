@@ -70,7 +70,7 @@ jobs:
       - name: Upload Deps to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: inflated/deps
+          path: inflated/dist/deps
           destination: react.microfrontends.app
           parent: false
 
