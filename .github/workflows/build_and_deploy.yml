@@ -17,19 +17,25 @@ jobs:
         uses: single-spa/action-build-global-script-deps@v1
         with:
           global-scripts: ./global-scripts.json
-          # TODO: make it make sense
-          output-folder: deps/deps
+          output-folder: dist/deps
       - name: Build Import Map
-        uses: single-spa/action-build-import-map-microfrontend-deps@v1
+        uses: single-spa/action-build-import-map-microfrontend-deps@dependencies-folder
         with:
           import-map-template: ./importmap-template.json
-          output-folder: deps
+          output-folder: dist
+          dependencies-folder: deps
           base-origin: https://react.microfrontends.app
 
       # https://github.com/react-microfrontends/shared-dependencies/actions/runs/11187939513/job/31105869976
       # https://github.com/actions/upload-artifact/issues/333#issuecomment-1227464293
       - name: Zip deps folder
-        run: zip -r deps.zip deps
+        run: zip -r deps.zip dist/deps
+
+      - name: Store artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deps.importmap
+          path: dist/deps.importmap
 
       - name: Store artifact
         uses: actions/upload-artifact@v4
@@ -68,11 +74,16 @@ jobs:
           destination: react.microfrontends.app
           parent: false
 
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deps.importmap
+
       - name: Update Import Map
         uses: single-spa/action-deploy-to-import-map-deployer@v1
         with:
           host: ${{ secrets.DEPLOYER_HOST }}
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
-          import-map-path: inflated/deps/deps.importmap
+          import-map-path: deps.importmap
           environment-name: react
