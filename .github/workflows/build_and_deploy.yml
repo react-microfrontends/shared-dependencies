@@ -19,7 +19,7 @@ jobs:
           global-scripts: ./global-scripts.json
           output-folder: dist/deps
       - name: Build Import Map
-        uses: single-spa/action-build-import-map-microfrontend-deps@dependencies-folder
+        uses: single-spa/action-build-import-map-microfrontend-deps@v1
         with:
           import-map-template: ./importmap-template.json
           output-folder: dist
