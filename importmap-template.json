@@ -3,6 +3,7 @@
     "single-spa": "7.0.0-beta.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-dom/client": "19.0.0",
     "rxjs": "7.8.1"
   },
   "scopes": {
