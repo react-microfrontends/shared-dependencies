@@ -10,7 +10,7 @@ This is an example microfrontend repo demonstrating how to use [single-spa](http
 
 [Full article](https://single-spa.js.org/docs/recommended-setup)
 
-This repository contains an [import map](https://github.com/WICG/import-maps/) template that controls the shared libraries between all microfrontends.
+This repository contains `importmap-template.json` and `global-scripts.json` files which are built via a Github action into a dependencies folder that is uploaded to the react.microfrontends.app public CDN. The import-map-template.json allows for specifying which npm packages and versions are available in the shared import map, as well as for scoped package dependencies to allow for specific microfrontends to use different versions. The `global-scripts.json` file is a list of npm packages that are self-hosted on the react.microfrontends.app domain, referenced within the root-config.
 
 Whenever a pull request is merged to main, a Github workflow auto-deploys the updated shared dependencies
 
