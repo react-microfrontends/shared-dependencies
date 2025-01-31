@@ -1,6 +1,6 @@
 {
   "global-scripts": [
-    "import-map-overrides@5.1.0",
+    "import-map-overrides@5.1.1",
     "@single-spa/import-map-injector@2.0.1"
   ]
 }
