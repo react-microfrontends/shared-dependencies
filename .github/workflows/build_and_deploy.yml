@@ -24,7 +24,7 @@ jobs:
           import-map-template: ./importmap-template.json
           output-folder: dist
           dependencies-folder: deps
-          base-origin: https://react.microfrontends.app
+          base-origin: https://angular.microfrontends.app
 
       # https://github.com/react-microfrontends/shared-dependencies/actions/runs/11187939513/job/31105869976
       # https://github.com/actions/upload-artifact/issues/333#issuecomment-1227464293
@@ -71,7 +71,7 @@ jobs:
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: inflated/dist/deps
-          destination: react.microfrontends.app/deps
+          destination: angular.microfrontends.app/deps
           parent: false
 
       - name: Download build artifact
@@ -86,4 +86,4 @@ jobs:
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
           import-map-path: deps.importmap
-          environment-name: react
+          environment-name: angular
